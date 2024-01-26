@@ -1,0 +1,77 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:FenixProFmodAva.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FenixProFmodAva.Views.MainView"
+             x:DataType="vm:MainViewModel">
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainViewModel />
+	</Design.DataContext>
+
+	<!--<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+
+	<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<StackPanel HorizontalAlignment="Center" Grid.Row="0">
+			<Label
+				ToolTip.Tip="The folder with game bank files."
+				HorizontalAlignment="Center">Bank Source Folder</Label>
+			<StackPanel Orientation="Horizontal" Margin="0,5">
+				<TextBox Text="{Binding BanksPath}"
+						 IsEnabled="{Binding !IsPathsReadOnly}" Width="400"/>
+				<Button Command="{Binding PickBanksFolderCommand}"
+						IsEnabled="{Binding !IsPathsReadOnly}">...</Button>
+			</StackPanel>
+			<Label
+				ToolTip.Tip="The output folder with extracted wav files."
+				HorizontalAlignment="Center">Wav Destination Folder</Label>
+			<StackPanel Orientation="Horizontal" Margin="0,5">
+				<TextBox Text="{Binding WavsPath}" IsEnabled="{Binding !IsPathsReadOnly}"
+						 Width="400"/>
+				<Button Command="{Binding PickWavsFolderCommand}"
+						IsEnabled="{Binding !IsPathsReadOnly}">...</Button>
+			</StackPanel>
+			<Label
+				ToolTip.Tip="Rebuilded .bank files that can be used in game."
+				HorizontalAlignment="Center">Build Destination Folder</Label>
+			<StackPanel Orientation="Horizontal" Margin="0,5">
+				<TextBox Text="{Binding BuildPath}"
+						 IsEnabled="{Binding !IsPathsReadOnly}" Width="400"/>
+				<Button Command="{Binding PickBuildFolderCommand}"
+						IsEnabled="{Binding !IsPathsReadOnly}">...</Button>
+			</StackPanel>
+
+			<StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
+				<Button IsEnabled="{Binding !IsPathsReadOnly}" Command="{Binding ExtractWavsCommand}" Margin="5">Extract</Button>
+				<Button IsEnabled="{Binding !IsPathsReadOnly}" Command="{Binding RebuildBanksCommand}" Margin="5">Rebuild</Button>
+				<!--<Button Margin="5">FSB Info</Button>-->
+			</StackPanel>
+		</StackPanel>
+
+		<Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="5">
+			<ScrollViewer x:Name="ConsoleScroll" >
+				<StackPanel x:Name="Console" />
+			</ScrollViewer>
+		</Border>
+
+
+		<StackPanel Grid.Row="2">
+			<TextBlock Margin="5" Text="{Binding ProgressText}"/>
+			<ProgressBar Height="10" Minimum="0" Maximum="{Binding ProgressMaximum}"
+						 Value="{Binding ProgressValue}" ShowProgressText="False"/>
+		</StackPanel>
+
+
+	</Grid>
+
+
+
+</UserControl>

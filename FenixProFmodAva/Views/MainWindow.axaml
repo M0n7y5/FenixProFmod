@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FenixProFmodAva.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:FenixProFmodAva.Views"
+        mc:Ignorable="d" Width="500" Height="450" 
+        x:Class="FenixProFmodAva.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FenixProFmodAva"
+		WindowStartupLocation="CenterScreen"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent" CornerRadius="7" CanResize="False"
+		ExtendClientAreaToDecorationsHint="True">
+	<Panel>
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="1"
+					MaterialOpacity="0.45" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+
+		<DockPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+			<Menu DockPanel.Dock="Top">
+				<MenuItem Header="_Menu">
+					<MenuItem Header="_Open..."/>
+					<Separator/>
+					<MenuItem Header="_Exit"/>
+				</MenuItem>
+				<MenuItem Header="_Options">
+					<MenuItem Header="Copy"/>
+					<MenuItem Header="Paste"/>
+				</MenuItem>
+			</Menu>
+		</DockPanel>
+		<Label IsHitTestVisible="False" Margin="0,6,0,0" HorizontalAlignment="Center">FenixProFmod</Label>
+		<Separator VerticalAlignment="Top" Margin="10,30,10,0"/>
+		<views:MainView  Margin="0,35,0,0"/>
+	</Panel>
+
+</Window>

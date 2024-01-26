@@ -1,0 +1,36 @@
+Command line switches :
+
+-build_mode          s|i|m Build mode
+                     s = Single FSB (default)
+                     i = Single Interleaved FSB
+                     m = Multiple FSBs
+-ignore_errors       Ignore errors in compilation such as "file not found"
+-cache_dir           Use specified directory for cache files
+-verbosity           0...5 Verbosity of logging
+-allow_fsb           Allow FSBs to be used as source files
+-help                Display command line help
+-recursive           Recursively scan subdirectories for files
+-format              <format> Target format (default = pcm)
+                     Available formats :
+                     pcm|pcmbigendian|adpcm|mp2|mp3|xma|at9ps4|at9psvita|vorbis|fadpcm
+-quality             0...100 Compression quality (XMA/MP2/MP3/AT9/Vorbis) (default = 75)
+-encryption_key      [encryptionkey] Encryption key
+-no_hf_filter        XMA disable high frequency filtering (Xbox360 only)
+-no_seek             XMA disable seeking to save memory (Xbox360 only)
+-basic_headers       Use smaller subsound headers
+-no_loop             Disable the automatic behaviour, which is to encode the file as if it was looping.
+-no_interleaving     For stereo and above VAG/GCADPCM, don't interleave the data as LRLR.. instead use LLRR type encoding.
+-generate_c_header   Generate a C header code file containing subsound names and indices.
+-profile             Override settings with a specific profile
+-thread_count        Number of threads to use for concurrent subsound encoding
+-optimize_samplerate Optimize sample rate (default = off)
+-write_peak_volume   Write peak volume (default = off)
+-write_proj          Write out a project file instead of building a soundbank file
+-rebuild             Don't load cache files, re-encode everything from scratch
+-no_guid             Disable GUID generation in FSB header.
+
+Examples :
+
+fsbankexcl -o MyBank.fsb <source>
+
+Note: A .fsproj or .lst file can be used as the source.
