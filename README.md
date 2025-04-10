@@ -13,6 +13,8 @@ Tested on game **Subnautica**.
 ![](resources/screen.png)
 
 ## How to use
+- Make sure you have dotnet runtime 8+ installed (https://dotnet.microsoft.com/en-us/download)  
+
 - Move bank files you want to modify/slash extract to bank folder. Click on **Extract** and wait a bit. 
 
 - Extracted sounds are in wav folder.
